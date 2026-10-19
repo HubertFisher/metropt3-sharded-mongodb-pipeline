@@ -1,5 +1,10 @@
 # MetroPT-3 MongoDB Ingestion
 
+[![CI](https://github.com/HubertFisher/MetroPT3-MongoDB-Ingestion/actions/workflows/ci.yml/badge.svg)](https://github.com/HubertFisher/MetroPT3-MongoDB-Ingestion/actions/workflows/ci.yml)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
+[![MongoDB 8.0](https://img.shields.io/badge/MongoDB-8.0-47A248.svg)](https://www.mongodb.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 A data-validated MongoDB sharding project built around the actual MetroPT-3 distribution in this
 repository. It combines a bounded-memory ingestion service with an observable local sharded
 cluster: a three-member config-server replica set, two three-member shard replica sets, and a
@@ -116,15 +121,16 @@ range plan.
 
 - Python 3.11 or newer
 - Docker Engine with Compose for the local MongoDB 8 sharded cluster
-- `data/metropt+3+dataset.zip` for the full ingestion
+- `data/metropt+3+dataset.zip` from the [UCI Machine Learning Repository (MetroPT-3 Dataset)](https://archive.ics.uci.edu/dataset/791/metropt+3+dataset) for the full ingestion
 
-The 218 MB archive is deliberately ignored by Git and excluded from Docker builds.
+The 218 MB archive is deliberately ignored by Git and excluded from Docker builds. Fetch it directly with `make download-data`.
 
 ## Docker quick start
 
 ```bash
 cp .env.example .env
 # Review METROPT_SOURCE_TIMEZONE in .env; UTC is an example, not a dataset fact.
+make download-data
 make cluster-up
 make cluster-status
 make ingest

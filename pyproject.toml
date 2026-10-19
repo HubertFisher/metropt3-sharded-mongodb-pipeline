@@ -9,7 +9,7 @@ description = "Data-validated MetroPT-3 ingestion into a replicated MongoDB shar
 readme = "README.md"
 requires-python = ">=3.11"
 license = { text = "MIT" }
-authors = [{ name = "ADM Project Contributors" }]
+authors = [{ name = "Ali Tulegenov" }]
 dependencies = [
   "pymongo>=4.10,<5",
 ]
@@ -45,7 +45,7 @@ show_missing = true
 [tool.mypy]
 python_version = "3.11"
 strict = true
-packages = ["metropt_ingest"]
+packages = ["metropt_ingest", "tests"]
 
 [tool.ruff]
 line-length = 100

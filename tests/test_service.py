@@ -1,6 +1,8 @@
+from collections.abc import Sequence
 from datetime import UTC, datetime, timedelta
 
 from metropt_ingest.bucketing import iter_buckets
+from metropt_ingest.models import SensorBucket
 from metropt_ingest.repository import WriteResult
 from metropt_ingest.service import IngestionService
 from tests.helpers import sensor_reading
@@ -14,7 +16,7 @@ class RecordingRepository:
     def prepare(self) -> None:
         self.prepared = True
 
-    def write(self, buckets: list[object]) -> WriteResult:
+    def write(self, buckets: Sequence[SensorBucket]) -> WriteResult:
         self.batch_sizes.append(len(buckets))
         return WriteResult(inserted=len(buckets))
 

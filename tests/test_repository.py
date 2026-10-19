@@ -6,6 +6,7 @@ from pymongo.errors import ConnectionFailure, OperationFailure
 
 from metropt_ingest.bucketing import iter_buckets
 from metropt_ingest.errors import RepositoryError
+from metropt_ingest.models import SensorBucket
 from metropt_ingest.repository import (
     DryRunBucketRepository,
     MongoBucketRepository,
@@ -14,7 +15,7 @@ from metropt_ingest.repository import (
 from tests.helpers import sensor_reading
 
 
-def one_bucket():
+def one_bucket() -> SensorBucket:
     return next(
         iter_buckets(
             [sensor_reading(datetime(2020, 2, 1, tzinfo=UTC))],
